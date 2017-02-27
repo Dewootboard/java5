@@ -12,6 +12,6 @@ public class Player extends Entity{
 	
 	@Override
 	public void draw(Graphics g){
-		g.drawOval(getPosition().getX(), getPosition().getY(), 25, 25);
+		g.drawOval(position.x, position.y, 25, 25);
 	}
 }

@@ -27,32 +27,40 @@ public class Game extends Applet implements Runnable, KeyListener{
 		addKeyListener(this);
 		player = new Player(50, 500);
 		entities.add(player);
-		run();
+		new Thread(()->run()).start();
 	}
 	
 	public void paint(Graphics g){
+		super.paint(g);
+		System.out.println("leadadadft");
 		g.setColor(Color.red);
-		g.fillRect(0, 600, 1280, 120);
+		g.fillRect(0, 0, 1080, 720);
+		g.setColor(Color.white);
+		player.draw(g);
 		for(Entity e : entities)
 			e.draw(g);
-		g.drawLine(100, 100, 200, 200);
 	}
 	
 	public void update(Graphics g){
-		for(Entity e : entities)
+		for(Entity e : entities){
 			e.update();
+		}
 		paint(g);
 	}
 
 	@Override
 	public void run() {
 		while(true){
-			System.out.println("WAHT");
+			System.out.println(player.getPosition().x);
 			if(left){
-				player.setXVel(-2);
+				player.setXPos(player.getPosition().x-4);
+				repaint( player.getPosition().x-4, player.getPosition().y, 34, 34);
+				System.out.println("left");
 			}
 			if(right){
-				player.setXVel(2);
+				player.setXPos(player.getPosition().x+4);
+				repaint(player.getPosition().x-4, player.getPosition().y-4, 33, 33);
+				System.out.println("right");
 			}
 			if(jump){
 				player.setYVel(-10);
@@ -60,6 +68,7 @@ public class Game extends Applet implements Runnable, KeyListener{
 				if(player.getPosition().getY() <= 599)
 				player.setYVel(10);
 			if(shoot){
+				System.out.println("Shooting");
 				Bullet bullet = new Bullet(player.getPosition(), !left);
 				entities.add(bullet);
 			}
@@ -67,7 +76,7 @@ public class Game extends Applet implements Runnable, KeyListener{
 			update(d);
 			
 			try{
-				Thread.sleep(4);
+				Thread.sleep(20);
 			}catch(Exception e){
 				
 			}
@@ -88,7 +97,7 @@ public class Game extends Applet implements Runnable, KeyListener{
 		if(e.getKeyCode() == 32){
 			jump = true;
 		}
-		if(e.getKeyCode() == 'e'){
+		if(e.getKeyCode() == KeyEvent.VK_E){
 			shoot = true;
 		}
 	}
@@ -103,7 +112,7 @@ public class Game extends Applet implements Runnable, KeyListener{
 		if(e.getKeyCode() == 32){
 			jump = false;
 		}
-		if(e.getKeyCode() == 'e'){
+		if(e.getKeyCode() == KeyEvent.VK_E){
 			shoot = false;
 		}
 	}

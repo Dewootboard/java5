@@ -12,11 +12,17 @@ public class Bullet extends Entity{
 	public Bullet(Vector2 position, boolean right){
 		super(position.getX(), position.getY());
 		velocity.setY(0);
-		velocity.setX(right?4:-4);
+		velocity.setX(right?6:-6);
 	}
 	
 	@Override
 	public void draw(Graphics g){
-		g.fillOval(position.getX(), position.getY(), 2, 2);
+		g.fillOval(position.x, position.y, 5, 3);
+	}
+
+	@Override
+	public void update(){
+		position.x = getVelocity().x + getPosition().x;
+		position.y = getVelocity().y + getPosition().y;
 	}
 }

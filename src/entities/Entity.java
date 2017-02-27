@@ -22,7 +22,11 @@ public class Entity{
 	public void setXVel(int x){
 		velocity.setX(x);
 	}
-	
+
+	public void setXPos(int x){
+		position.setX(x);
+	}
+
 	public void setYVel(int y){
 		velocity.setY(y);
 	}
@@ -35,7 +39,5 @@ public class Entity{
 
 	}
 	
-	public void update(){
-		position.addVector2(velocity);
-	}
+	public void update(){	}
 }
