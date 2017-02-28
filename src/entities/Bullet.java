@@ -1,28 +1,36 @@
 package entities;
-import java.awt.Graphics;
+import java.awt.*;
+import java.util.ArrayList;
 
 
 public class Bullet extends Entity{
-	public Bullet(int x, int y, boolean right){
-		super(x, y);
+	public Bullet(int x, int y, boolean right, int width, int height){
+		super(x, y, width, height);
 		velocity.setY(0);
-		velocity.setX(right?4:-4);
+		velocity.setX(right?2:-2);
 	}
 	
-	public Bullet(Vector2 position, boolean right){
-		super(position.getX(), position.getY());
+	public Bullet(Vector2 position, boolean right, int width, int height){
+		super(position.getX(), position.getY(), width, height);
 		velocity.setY(0);
-		velocity.setX(right?6:-6);
+		velocity.setX(right?2:-2);
 	}
 	
 	@Override
 	public void draw(Graphics g){
-		g.fillOval(position.x, position.y, 5, 3);
+		g.setColor(Color.red);
+		g.fillOval(position.x, position.y, width, height);
 	}
 
-	@Override
-	public void update(){
-		position.x = getVelocity().x + getPosition().x;
-		position.y = getVelocity().y + getPosition().y;
+	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e){
+		for(Entity ent : entities)
+			if(e.getPosition().x == ent.getPosition().x && ent != e){
+				ent.setXPos(3000);
+				ent.setYPos(-3000);
+				e.setXPos(3000);
+				e.setYPos(3000);
+			}
+		updatePos();
+		return entities;
 	}
 }

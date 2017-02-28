@@ -1,14 +1,19 @@
 package entities;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 
 public class Entity{
 	protected Vector2 position;
 	protected Vector2 velocity;
+	protected int width;
+	protected int height;
 	
-	public Entity(int x, int y){
+	public Entity(int x, int y, int width, int height){
 		position = new Vector2(x, y);
 		velocity = new Vector2();
+		this.width = width;
+		this.height = height;
 	}
 	
 	public void setVelocity(Vector2 velocity){
@@ -27,6 +32,18 @@ public class Entity{
 		position.setX(x);
 	}
 
+	public void setYPos(int y){
+		position.setY(y);
+	}
+
+	public int getWidth(){
+		return width;
+	}
+
+	public int getHeight(){
+		return height;
+	}
+
 	public void setYVel(int y){
 		velocity.setY(y);
 	}
@@ -38,6 +55,14 @@ public class Entity{
 	public void draw(Graphics g){
 
 	}
-	
-	public void update(){	}
+
+	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e){
+		return entities;
+	}
+
+	public void updatePos()
+	{
+		position.x = position.x + velocity.x;
+		position.y = position.y + velocity.y;
+	}
 }
