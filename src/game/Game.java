@@ -56,18 +56,17 @@ public class Game extends JFrame implements KeyListener {
 
 
 	public void update(){
-		ArrayList<Entity> ents = entities;
+		ArrayList<Entity> removal = new ArrayList<>();
 		for(Entity e: entities) {
-			entities = e.update(entities, e);
-			if(ents != entities)
-				update();
+			entities = e.update(entities, e, removal);
 		}
+		entities.removeAll(removal);
 		repaint();
 	}
 
 	private void GameLoop(){
 		player = new Player(getWidth()-(40+25), getHeight()-(45 + 25), 20, 20);
-		enemy = new Enemy(20, getHeight()-(40+40), 10,40);
+		enemy = new Enemy(200, getHeight()-(40+40), 10,40);
 
 		setBackground(Color.white);
 		setFocusable(true);
@@ -77,12 +76,6 @@ public class Game extends JFrame implements KeyListener {
 
 		boolean facingLeft = false;
 		while(true){
-			if(enemy.getPosition().x < player.getPosition().x)
-				enemy.setXPos(enemy.getPosition().x + 4);
-			else if(enemy.getPosition().x > player.getPosition().x)
-				enemy.setXPos(enemy.getPosition().x - 4);
-
-			System.out.println(player.getPosition().x);
 			if(left){
 				player.setXPos(player.getPosition().x-4);
 				facingLeft = true;

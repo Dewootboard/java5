@@ -56,7 +56,8 @@ public class Entity{
 
 	}
 
-	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e){
+	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e, ArrayList<Entity> removal){
+		updatePos();
 		return entities;
 	}
 

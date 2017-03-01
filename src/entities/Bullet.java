@@ -22,14 +22,15 @@ public class Bullet extends Entity{
 		g.fillOval(position.x, position.y, width, height);
 	}
 
-	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e){
-		for(Entity ent : entities)
-			if(e.getPosition().x == ent.getPosition().x && ent != e){
-				ent.setXPos(3000);
-				ent.setYPos(-3000);
-				e.setXPos(3000);
-				e.setYPos(3000);
+	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e, ArrayList<Entity> removal){
+		for(Entity ent : entities) {
+			if (e.getPosition().x == ent.getPosition().x && ent != e &&
+					e.getPosition().y+e.getHeight() > ent.getPosition().y-ent.getHeight() &&
+					e.getPosition().y < ent.getPosition().y+ent.getHeight()) {
+				removal.add(ent);
+				removal.add(e);
 			}
+		}
 		updatePos();
 		return entities;
 	}

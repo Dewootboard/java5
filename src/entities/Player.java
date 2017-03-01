@@ -13,11 +13,12 @@ public class Player extends Entity{
 	
 	@Override
 	public void draw(Graphics g){
+		g.drawString("PLAYER: Position " + position.x, 10, 10);
 		g.setColor(Color.black);
 		g.drawRect(position.x, position.y, width, height);
 	}
 
-	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e){
+	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e, ArrayList<Entity> removal){
 		updatePos();
 		return entities;
 	}
