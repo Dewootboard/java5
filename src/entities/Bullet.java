@@ -7,13 +7,13 @@ public class Bullet extends Entity{
 	public Bullet(int x, int y, boolean right, int width, int height){
 		super(x, y, width, height);
 		velocity.setY(0);
-		velocity.setX(right?2:-2);
+		velocity.setX(right?1:-1);
 	}
 	
 	public Bullet(Vector2 position, boolean right, int width, int height){
 		super(position.getX(), position.getY(), width, height);
 		velocity.setY(0);
-		velocity.setX(right?2:-2);
+		velocity.setX(right?1:-1);
 	}
 	
 	@Override

@@ -65,7 +65,7 @@ public class Game extends JFrame implements KeyListener {
 	}
 
 	private void GameLoop(){
-		player = new Player(getWidth()-(40+25), getHeight()-(45 + 25), 20, 20);
+		player = new Player(180, getHeight()-(45 + 25), 20, 20);
 		enemy = new Enemy(200, getHeight()-(40+40), 10,40);
 
 		setBackground(Color.white);
@@ -98,7 +98,7 @@ public class Game extends JFrame implements KeyListener {
 			update();
 
 			try{
-				Thread.sleep(25);
+				Thread.sleep(18);
 			}catch(Exception e){
 
 			}
