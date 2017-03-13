@@ -7,13 +7,13 @@ public class Bullet extends Entity{
 	public Bullet(int x, int y, boolean right, int width, int height){
 		super(x, y, width, height);
 		velocity.setY(0);
-		velocity.setX(right?1:-1);
+		velocity.setX(right?3:-3);
 	}
 	
 	public Bullet(Vector2 position, boolean right, int width, int height){
 		super(position.getX(), position.getY(), width, height);
 		velocity.setY(0);
-		velocity.setX(right?1:-1);
+		velocity.setX(right?3:-3);
 	}
 	
 	@Override
@@ -24,9 +24,8 @@ public class Bullet extends Entity{
 
 	public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e, ArrayList<Entity> removal){
 		for(Entity ent : entities) {
-			if (e.getPosition().x == ent.getPosition().x && ent != e &&
-					e.getPosition().y+e.getHeight() > ent.getPosition().y-ent.getHeight() &&
-					e.getPosition().y < ent.getPosition().y+ent.getHeight()) {
+			if (ent != e && e.getPosition().y+e.getHeight() > ent.getPosition().y && e.getPosition().y < ent.getPosition().y + ent.getHeight() &&
+					e.getPosition().x+e.getWidth() > ent.getPosition().x && e.getPosition().x < ent.getPosition().x + ent.getWidth()) {
 				removal.add(ent);
 				removal.add(e);
 			}

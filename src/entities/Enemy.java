@@ -19,31 +19,31 @@ public class Enemy extends Entity{
     }
 
     public ArrayList<Entity> update(ArrayList<Entity> entities, Entity e, ArrayList<Entity> removal){
-        Entity closestEnt = entities.get(entities.size()-1);
-        for(Entity ents : entities){
-            if(ents != e)
-                if(ents.getPosition().x - e.getPosition().x > 0){
-                    if(ents.getPosition().x - e.getPosition().x < closestEnt.getPosition().x - e.getPosition().x){
-                        closestEnt = ents;
-                    }
-                }
-                else {
-                    if(ents.getPosition().x - e.getPosition().x > closestEnt.getPosition().x - e.getPosition().x) {
-                        closestEnt = ents;
-                    }
-                }
-
-        }
-        /*if(entities.get(1).getPosition().x < e.getPosition().x)
-            e.setXVel(-1);
+        Entity closestEnt;
+        if(entities.get(0) == e)
+            closestEnt = entities.get(1);
         else
-            e.setXVel(1);*/
+            closestEnt = entities.get(0);
+        for(Entity ents : entities){
+            if(ents != e) {
+                if (Math.abs(ents.getPosition().x - e.getPosition().x) < Math.abs(closestEnt.getPosition().x - e.getPosition().x)) {
+                    closestEnt = ents;
+                }
+            }
+        }
+
         int dist = closestEnt.getPosition().x - e.getPosition().x;
         if(dist < 200 && dist > -200){
             if(dist > 0)
-                e.setXVel(-1);
+                e.setXVel(-2);
             else
+                e.setXVel(2);
+        }else{
+            if(dist < 0) {
                 e.setXVel(1);
+            }else{
+                e.setXVel(-1);
+            }
         }
 
         updatePos();

@@ -91,7 +91,7 @@ public class Game extends JFrame implements KeyListener {
 				player.setYPos(player.getPosition().y+2);
 			if(shoot){
 				shoot = false;
-				Bullet bullet = new Bullet(player.getPosition().x-1, player.getPosition().y + 8, !facingLeft, 9, 9);
+				Bullet bullet = new Bullet(facingLeft ? player.getPosition().x - 9 : player.getPosition().x + player.getWidth(), player.getPosition().y + 8, !facingLeft, 9, 9);
 				entities.add(bullet);
 			}
 
