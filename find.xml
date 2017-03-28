@@ -1,7 +1,7 @@
 <application>
   <component name="FindSettings">
-    <option name="customScope" value="File '[lwjgltest] - ...\src\game\Renderer.java'" />
-    <option name="defaultScopeName" value="File '[lwjgltest] - ...\src\game\Renderer.java'" />
-    <option name="SEARCH_SCOPE" value="File '[lwjgltest] - ...\src\game\Renderer.java'" />
+    <option name="customScope" value="Project '3D'" />
+    <option name="defaultScopeName" value="Project '3D'" />
+    <option name="SEARCH_SCOPE" value="Project '3D'" />
   </component>
 </application>
